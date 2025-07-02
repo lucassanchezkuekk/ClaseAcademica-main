@@ -1,32 +1,4 @@
-    @Test
-    public void testGuardarContenido() {
-        Contenido nuevo = new Contenido("Fisica", "Ondas", "Maria");
-        when(contenidoRepository.save(nuevo)).thenReturn(nuevo);
 
-        Contenido resultado = contenidoService.guardar(nuevo);
-
-        assertEquals("Fisica", resultado.getTitulo());
-        assertEquals("Maria", resultado.getAutor());
-        verify(contenidoRepository).save(nuevo);
-    }
-
-    @Test
-    public void testObtenerPorId() {
-        Contenido c = new Contenido("Quimica", "Atomos", "Pedro");
-        when(contenidoRepository.findById(1)).thenReturn(java.util.Optional.of(c));
-
-        Contenido resultado = contenidoService.obtenerPorId(1).orElse(null);
-
-        assertEquals("Quimica", resultado.getTitulo());
-        assertEquals("Pedro", resultado.getAutor());
-        verify(contenidoRepository).findById(1);
-    }
-
-    @Test
-    public void testEliminarPorId() {
-        contenidoService.eliminarPorId(5);
-        verify(contenidoRepository).deleteById(5);
-    }
 package com.eduTech.service;
 
 
@@ -81,6 +53,7 @@ public class ContenidoAcademiaServicetest {
         
         verify(contenidoRepository, times(1)).findAll();
     }
+    
 }
 
 
